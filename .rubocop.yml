@@ -1,0 +1,129 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rails
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7.4
+  Exclude:
+    - db/schema.rb
+    - db/migrate/**
+    - bin/*
+
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - demo
+    - staging
+
+Layout/LineLength:
+  Max: 124
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/SuppressedException:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'spec/**/*.rb'
+
+Rails/ApplicationController:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/Documentation:
+  Enabled: false
+
+Style/GlobalVars:
+  AllowedVariables:
+    - $redis
+    - $messenger_redis
+    - $searchkick_redis
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/Semicolon:
+  Exclude:
+    - 'spec/**/*.rb'
+
+# Rails
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# Rswag
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/fabricators/**.rb'
+    - 'spec/integration/**/**.rb'
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/integration/**/**.rb'
+RSpec/ScatteredSetup:
+  Exclude:
+    - 'spec/integration/**/**.rb'
+RSpec/SubjectStub:
+  Exclude:
+    - 'spec/services/integrations/**/**.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/**.rb'
+
+# Fabricators
+RSpec/MissingExampleGroupArgument:
+  Exclude:
+    - 'spec/fabricators/**.rb'
+RSpec/EmptyLineAfterExampleGroup:
+  Exclude:
+    - 'spec/fabricators/**.rb'
+Style/FrozenStringLiteralComment:
+  Enabled: false
